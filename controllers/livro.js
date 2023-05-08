@@ -24,7 +24,7 @@ function getLivro(req, res) {
 
 function postLivro(req,res) {
     try {
-        const livroNovo = req.body;
+        const livroNovo =(req.body);
         insereLivro(livroNovo)
         res.status(201)
         res.send("livroInserido")

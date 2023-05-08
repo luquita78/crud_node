@@ -4,12 +4,12 @@ const rotalivro = require("./rotas/livro");
 
 
 const app = express();
-
-
 app.use(express.json())
+
 //app.use(express.json());
 
 app.use("/livros",rotalivro);
+
 
 
 const port = 8080; 
