@@ -1,5 +1,5 @@
 const {Router} = require("express");
-const {getLivros, patchLivro} = require("../controllers/livro")
+const {getLivros, patchLivro, deleteLivro} = require("../controllers/livro")
 const {getLivro,postLivro} = require("../controllers/livro")
 
 const router = Router();
@@ -10,9 +10,9 @@ router.get("/:id",getLivro);
 
 router.post("/", postLivro);
 
-router.patch("/:id",patchLivro)
+router.patch("/:id",patchLivro);
 
-router.delete("/", (req,res)=>{res.send("Requisição tipo DELETE")})
+router.delete("/:id", deleteLivro);
 
 
 
