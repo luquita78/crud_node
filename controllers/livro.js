@@ -18,7 +18,7 @@ function getLivro(req, res) {
       const livro = getLivroPorId(id);
       res.send(livro);
     }else{
-      res.status(412)
+      res.status(422)
       res.send("ID inválido!")
     }
       
@@ -31,9 +31,15 @@ function getLivro(req, res) {
 function postLivro(req,res) {
     try {
         const livroNovo =(req.body);
+        if(req.body.nome){
         insereLivro(livroNovo)
         res.status(201)
         res.send("livroInserido")
+        }else{
+          res.status(422);
+          res.send("Insira a campo nome!");
+        }
+        
     } catch (error) {
         res.status(500)
         res.send(error.message)
@@ -52,7 +58,7 @@ function patchLivro(req,res)
     res.send("Livro alterado com sucesso!");
     
     }else{
-      res.status(412)
+      res.status(422)
       res.send("ID inválido!")
     }
 
@@ -72,7 +78,7 @@ function deleteLivro(req,res)
 
      res.send("Livro deletado com sucesso!");
     } else{
-      res.status(412)
+      res.status(422)
       res.send("ID inválido!")
     }
 
