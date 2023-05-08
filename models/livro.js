@@ -20,6 +20,18 @@ function insereLivro(livroNovo){
 
     fs.writeFileSync("livros.json", JSON.stringify(novaListaDeLivros))
 }
-module.exports = {
-    getTodosLivros, getLivroPorId,insereLivro
+
+function ModificaLivro (modicacoes, id)
+{
+    let livrosAtuais = JSON.parse(fs.readFileSync("./livros.json"));
+    const indexModificado = livrosAtuais.findIndex(livro=> livro.id === id);
+    const conteudoModificado = {...livrosAtuais[indexModificado], ...modicacoes}
+    livrosAtuais[indexModificado] = conteudoModificado;
+    fs.writeFileSync("livros.json", JSON.stringify(livrosAtuais))
+
 }
+
+module.exports = {
+    getTodosLivros, getLivroPorId,insereLivro, ModificaLivro
+}
+
